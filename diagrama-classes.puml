@@ -1,0 +1,70 @@
+@startuml
+title Diagrama de Classes – Plataforma TEA+
+
+' =========================
+' Classe Usuário
+' =========================
+class Usuario {
+  - id: int
+  - nome: String
+  - email: String
+  - senha: String
+  - tipoUsuario: String
+  + cadastrar()
+  + login()
+  + logout()
+}
+
+' =========================
+' Classe Conteúdo Educativo
+' =========================
+class ConteudoEducativo {
+  - idConteudo: int
+  - titulo: String
+  - descricao: String
+  - categoria: String
+  - faixaEtaria: String
+  + visualizarConteudo()
+}
+
+' =========================
+' Classe Profissional Especializado
+' =========================
+class ProfissionalEspecializado {
+  - idProfissional: int
+  - nome: String
+  - formacao: String
+  - especializacao: String
+  - descricaoAtuacao: String
+  + visualizarPerfil()
+}
+
+' =========================
+' Classe Diretório de Profissionais
+' =========================
+class DiretorioProfissionais {
+  + listarProfissionais()
+}
+
+' =========================
+' Classe Sistema
+' =========================
+class SistemaTEAPlus {
+  + autenticarUsuario()
+  + gerenciarConteudos()
+  + exibirDiretorio()
+}
+
+' =========================
+' Relacionamentos
+' =========================
+Usuario "1" --> "0..*" ConteudoEducativo : acessa
+Usuario "1" --> "0..*" ProfissionalEspecializado : consulta
+
+DiretorioProfissionais "1" --> "0..*" ProfissionalEspecializado : contém
+
+SistemaTEAPlus --> Usuario : gerencia
+SistemaTEAPlus --> ConteudoEducativo : gerencia
+SistemaTEAPlus --> DiretorioProfissionais : controla
+
+@enduml
