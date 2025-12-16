@@ -1,0 +1,21 @@
+@startuml
+title Diagrama de Atividades – Acesso à Plataforma TEA+
+
+start
+
+:Usuário acessa o site;
+:Seleciona opção de login;
+:Insere e-mail e senha;
+
+if (Credenciais válidas?) then (Sim)
+  :Sistema autentica usuário;
+  :Usuário acessa área restrita;
+  :Seleciona funcionalidade desejada;
+  :Visualiza conteúdos ou diretório;
+else (Não)
+  :Sistema exibe mensagem de erro;
+  :Usuário tenta novamente;
+endif
+
+stop
+@enduml
